@@ -1,0 +1,120 @@
+.splice-wrap {
+  overflow: hidden;
+  position: relative;
+  background: #000;
+
+}
+
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.container-splice {
+  text-align: center;
+
+  .flip {
+    width:400px;
+    height: 400px;
+    margin: 0 auto;
+    position: relative;
+    perspective: 1000px;
+  }
+  .flip div{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    transition: all 1s ease;
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
+  }
+  .flip div.front {
+    background: url("/webpack-template/dist/assets/img/true1.jpg");
+    background-size: contain;
+    background-position: center;
+    background-repeat:no-repeat;
+    z-index: 1;
+  }
+
+  .flip div.back{
+    background: url("/webpack-template/dist/assets/img/true_depth_camera_medium_2x.jpg");
+    background-size: contain;
+    background-position: center;
+    background-repeat:no-repeat;
+    z-index: 2;
+  }
+  .flip:hover div.front{
+    z-index: 2;;
+  }
+  .flip:hover div.back{
+    z-index: 1;;
+  }
+  div.back{
+    transform:rotateY(-180deg);
+  }
+  :hover div.front{
+    transform:rotateY(180deg);
+  }
+  :hover div.back{
+    transform:rotateY(0deg);
+  }
+}
+
+.module {
+  &:first-child {
+    margin-bottom: 0;
+  }
+
+  &.parallax {
+    height: 600px;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+  }
+
+  &.parallax1 {
+    background-image: url("/webpack-template/dist/assets/img/office.jpg");
+  }
+
+  &.parallax2 {
+    background-image: url("/webpack-template/dist/assets/img/true_depth_camera_medium_2x.jpg");
+  }
+}
+
+.container-splice {
+  height: 10px;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+
+  margin: 0 auto;
+  overflow: hidden;
+  //-webkit-animation: height 2s ease-in;
+  //perspective: 1000px;
+
+  .rect {
+    height: 10px;
+    background-image: url("/webpack-template/dist/assets/img/hero.jpg");
+    background-size: cover;
+    background-position: 50% 70%;
+    background-repeat: no-repeat;
+    -webkit-animation: scale 60s infinite;
+
+    @-webkit-keyframes scale {
+      0% {
+        -webkit-transform: scale(1.2);
+      }
+      50% {
+        -webkit-transform: scale(1.5);
+      }
+      100% {
+        -webkit-transform: scale(1.2);
+      }
+    }
+  }
+
+}

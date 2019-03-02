@@ -1,0 +1,146 @@
+header {
+  background: #000;
+  position: relative;
+
+
+  .logo {
+    @include respond-to(middleSmartphone) {
+      display: none;
+    }
+  }
+
+
+
+  .nav-list {
+
+    li {
+      display: inline-block;
+
+      a {
+        color: #ffffff;
+        text-decoration: none;
+        margin: 0 5px;
+      }
+
+      @include respond-to(middleSmartphone) {
+        display: block;
+        margin: 20px 0;
+      }
+    }
+    @include respond-to(middleSmartphone) {
+      position: absolute;
+      z-index: 256;
+      display: none;
+    }
+  }
+
+  .bubble {
+    opacity: 0;
+    visibility: hidden;
+    top: -400px;
+    left: -40%;
+
+    span {
+      transition: none;
+      height: 0;
+      width: 0;
+      left: 0;
+      top: 0;
+      position: absolute;
+      background-color: rgba(38, 84, 133, 0.54);
+      border-radius: 50%;
+      z-index: 18;
+      overflow: hidden;
+
+    }
+  }
+
+
+
+  label,
+  input {
+    display: block;
+    position: absolute;
+    left: 20px;
+    z-index: 2;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  label {
+    width: 20px;
+    height: 20px;
+    display: none;
+
+    span {
+      display: block;
+
+      &:before {
+        display: block;
+        content: "";
+        width: 20px;
+        height: 1px;
+        background: #fff;
+        position: absolute;
+        z-index: 1;
+      }
+
+      &:first-child {
+        margin-top: 6px;
+      }
+      &:last-child {
+        margin-top: 14px;
+      }
+    }
+    @include respond-to(middleSmartphone) {
+      display: block;
+      z-index: 256;
+    }
+  }
+
+  input {
+    position: absolute;
+    -webkit-appearance: none;
+    visibility: hidden;
+  }
+
+  input:checked + label {
+    span {
+      display: block;
+
+
+      &:first-child {
+        transform: rotate(45deg) translateY(2px) translateX(3px);
+      }
+      &:last-child {
+        transform: rotate(-45deg) translateY(-3px) translateX(3px);
+      }
+    }
+    ~ .bubble {
+      visibility: visible;
+      opacity: 1;
+      margin-top: 25px;
+      display: block;
+      position: absolute;
+      overflow: visible;
+      height: 400px;
+      width: 400px;
+      top: -150px;
+      left: -12%;
+      border-radius: 50%;
+      background-color: rgba(38, 84, 133, 0.54);
+      transition: all 0.4s ease;
+
+      span {
+        opacity: 1;
+        height: 400px;
+        width: 400px;
+        transition: all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+      }
+    }
+    ~ .nav-list {
+      display: block;
+    }
+  }
+}

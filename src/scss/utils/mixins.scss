@@ -1,0 +1,164 @@
+@function rem($pixels, $context: $mainFontSize) {
+  @if (unitless($pixels)) {
+    $pixels: $pixels * 1px;
+  }
+
+  @if (unitless($context)) {
+    $context: $context * 1px;
+  }
+
+  @return $pixels / $context * 1rem;
+}
+
+@mixin size($width,$height: $width) {
+  width: $width;
+  height: $height;
+}
+
+@mixin placeholder {
+  ::-webkit-input-placeholder {@content}
+  :-moz-placeholder           {@content}
+  ::-moz-placeholder          {@content}
+  :-ms-input-placeholder      {@content}
+}
+
+
+$largePhone: 640px;
+$tabletPortrait: 768px;
+$largePhoneLandscape: 812px;
+$tabletLandscape: 1024px;
+
+
+@mixin respond-to($media) {
+
+  @if $media == middleSmartphone {
+    @media (max-device-width: $largePhone) { @content; }
+  }
+
+  @else if $media == tablet {
+    @media (min-device-width: $tabletPortrait) and (max-device-width: $tabletLandscape) { @content; }
+  }
+
+  @else if $media == smallScreen {
+    @media (max-device-width: $tabletPortrait) { @content; }
+  }
+
+  @else if $media == largePhone {
+    @media (min-device-width: 320px) and (max-device-width: $largePhone) { @content; }
+  }
+
+  @else if $media == largePhoneLandscape {
+    @media (max-device-width: $largePhoneLandscape) and (orientation : landscape) { @content; }
+  }
+
+  @else if $media == desktop {
+    @media (min-device-width: 1024px) { @content; }
+  }
+
+  @else if $media == ipadpro {
+    @media only screen
+    and (min-device-width: $tabletPortrait)
+    and (max-device-width: $tabletLandscape)
+    and (-webkit-min-device-pixel-ratio: 1.5) {
+      @content;
+    }
+  }
+
+}
+
+
+
+@mixin image2x() {
+  @media (min--moz-device-pixel-ratio: 1.3),
+  (-o-min-device-pixel-ratio: 2.6/2),
+  (-webkit-min-device-pixel-ratio: 1.3),
+  (min-device-pixel-ratio: 1.3),
+  (min-resolution: 1.3dppx) {
+    @content;
+  }
+}
+
+
+@mixin font-face($style-name, $filepath) {
+  @font-face {
+    font-family: "#{$style-name}";
+    src: url($filepath + '.eot');
+    src: url($filepath + '.eot?#iefix') format('embedded-opentype'),
+    url($filepath + '.woff') format('woff'),
+    url($filepath + '.ttf') format('truetype'),
+    url($filepath + '.svg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+  }
+}
+
+
+// =============================================================================
+// font-size mixin with REM fallback
+// =============================================================================
+
+@mixin font-size($sizeValue: $default-text-size) {
+  font-size: $sizeValue + px;
+  font-size: ($sizeValue / 10) + rem ;
+}
+
+
+@mixin center() {
+  //-webkit-font-smoothing: antialiased;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
+
+
+@function black($opacity){
+  @return rgba(0,0,0,$opacity);
+}
+
+@function white($opacity){
+  @return rgba(255,255,255,$opacity);
+}
+
+@mixin box-emboss($opacity, $opacity2){
+  box-shadow:white($opacity) 0 1px 0, inset black($opacity2) 0 1px 0;
+}
+
+
+@mixin transition($transition) {
+  -moz-transition:    $transition;
+  -o-transition:      $transition;
+  -webkit-transition: $transition;
+  transition:         $transition;
+}
+
+@mixin noselect {
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Chrome/Safari/Opera */
+  -khtml-user-select: none; /* Konqueror */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently
+								  not supported by any browser */
+}
+
+@mixin transform ($val) {
+  -webkit-transform: $val;
+  -moz-transform: $val;
+  -ms-transform: $val;
+  transform: $val;
+}
+
+@mixin transform-mob ($val) {
+  -webkit-transform: $val!important;
+  -moz-transform: $val!important;
+  -ms-transform: $val!important;
+  transform: $val!important;
+}
+
+@mixin transform-origin ($val) {
+  -webkit-transform-origin: $val;
+  -moz-transform-origin: $val;
+  -ms-transform-origin: $val;
+  transform-origin: $val;
+}

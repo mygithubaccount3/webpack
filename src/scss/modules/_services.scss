@@ -1,0 +1,34 @@
+.services {
+  flex-direction: row;
+
+  div {
+    width: calc(100% / 4);
+    text-align: center;
+    padding: 5px;
+
+    p {
+      min-height: 100px;
+    }
+
+    @include respond-to(middleSmartphone) {
+      width: calc(100% / 2);
+    }
+  }
+
+  .icon-chat {
+    -webkit-animation: scale-infinite 3s infinite ;
+  }
+
+  .icon-dollar {
+    -webkit-animation: rotate 1s infinite ;
+  }
+
+  .icon-setup {
+    -webkit-animation: opacity 1s infinite ;
+  }
+
+  .icon-shipping {
+    -webkit-animation: translate-icon .5s infinite ;
+  }
+
+}

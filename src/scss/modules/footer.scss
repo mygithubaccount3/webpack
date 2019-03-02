@@ -1,0 +1,40 @@
+footer {
+  background: #000;
+
+  .license,
+  .sotial {
+    margin: 0;
+    display: inline-block;
+    color: #ffffff;
+    width: 49%;
+  }
+
+  .sotial {
+    text-align: right;
+    li {
+      display: inline-block;
+
+      a {
+        color: #ffffff;
+        margin: 0 5px;
+        display: block;
+
+        &:hover {
+          opacity: .8;
+          transition: .2s ease-in;
+        }
+      }
+    }
+  }
+}
+
+//.license {
+//	color: #ffffff;
+//	font-family: "PT Sans",sans-serif;
+//	font-size: 18px;
+//	font-weight: 400;
+//}
+//
+//footer .sotial {
+//	text-align: right;
+//}

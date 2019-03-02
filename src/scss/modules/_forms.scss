@@ -1,0 +1,227 @@
+form {
+  margin: 0 0 20px;
+}
+
+input::-ms-clear {
+  display: none;
+}
+
+::-webkit-input-placeholder { color: $placeholder-text-color; }
+::-moz-placeholder          { color: $placeholder-text-color; }
+:-moz-placeholder           { color: $placeholder-text-color; }
+:-ms-input-placeholder      { color: $placeholder-text-color; }
+
+input, select {
+
+  padding: 8px 12px;
+  color: #ccc;
+  border-radius: $input-radius;
+  border: 1px solid #ccc;
+  background: #ffffff;
+  width: 490px;
+
+
+  @include respond-to(smallScreen) {
+    width: 100%;
+  }
+
+  &.small {
+    width: 154px;
+    text-align: center;
+  }
+
+  &.medium {
+    width: 239px;
+    @include respond-to(smallScreen) {
+      width: 100%;
+    }
+  }
+
+  &:focus {
+    border: 1px solid $focused-input-border-color;
+    outline: none;
+
+  }
+
+  &:disabled {
+    background: $main-bg-color !important;
+    color: #000 !important;
+  }
+
+}
+
+
+textarea {
+  line-height: normal;
+  padding: 5px 12px;
+  color: #ccc;
+  border-radius: $input-radius;
+  border: 1px solid #ccc;
+  background: #ffffff;
+  width: 490px;
+  resize: none;
+  min-height: 70px;
+
+  &:focus {
+    border: 1px solid $focused-input-border-color;
+    outline: none;
+  }
+}
+
+input[type='number'],
+input[type='tel'] {
+  -moz-appearance:textfield;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+
+input[type='number'],
+input[type='text'],
+input[type='tel'],
+input[type='email'],
+select {
+  appearance: none;
+  box-shadow: none;
+  display: block;
+  margin: 0 auto 12px auto;
+}
+
+
+input[type='radio'] {
+
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  opacity: 0;
+
+  &.radio-button {
+
+    //position: relative;
+
+    &:after {
+      width: 20px;
+      height: 20px;
+      border-radius: 20px;
+      top: -2px;
+      left: -1px;
+      position: absolute;
+      content: "";
+      display: inline-block;
+      visibility: visible;
+      border: 1px solid #ccc;
+      background: #fff;
+      z-index: 50;
+    }
+
+    &:checked:after {
+      background: $primary-btn-bg;
+      border-color: $primary-btn-bg;
+    }
+
+    &:checked:before {
+      width: 6px;
+      height: 6px;
+      border-radius: 6px;
+      top: 5px;
+      left: 6px;
+      position: absolute;
+      background-color: #fff;
+      content: '';
+      display: inline-block;
+      visibility: visible;
+      z-index: 100;
+    }
+
+  }
+}
+
+
+
+.radio-label {
+  display: block;
+  position: relative;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+
+  &:before {
+    display: block;
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    top:0;
+    left: 0;
+    border: 1px solid $primary-btn-bg;
+    border-radius: 50%;
+    background: #fff;
+  }
+
+  &:after {
+    display: block;
+    content: '';
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: $primary-btn-bg;
+    top: 4px;
+    left: 4px;
+    opacity: 0;
+    transition: all ease .15s
+  }
+}
+
+input[type='radio']:checked +.radio-label:after {
+  opacity: 1;
+}
+
+
+input[type='checkbox'] {
+
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+
+  margin: 0 8px -5px 0;
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border-radius: 1px;
+  border: 1px solid #cacbcc;
+  cursor: pointer;
+
+  &:after {
+    display: inline-block;
+    content: '';
+    width: 9px;
+    height: 5px;
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    border: 1px solid $primary-btn-color;
+    border-top: none;
+    border-right: none;
+    background: transparent;
+    opacity: 0;
+    transform: rotate(-45deg);
+  }
+
+  &:checked {
+    background: $primary-btn-bg;
+    border: 1px solid $primary-btn-bg;
+  }
+
+  &:checked:after {
+    opacity: 1;
+  }
+
+  &:disabled {
+    background: #d1d1d1;
+    border-color: #d1d1d1;
+  }
+
+}

@@ -1,0 +1,84 @@
+.flex {
+
+  display: flex;
+
+  &.row {
+    flex-direction: row;
+  }
+
+  &.column {
+    flex-direction: column;
+  }
+
+  &.flex-end {
+    justify-content: flex-end;
+  }
+
+  &.space-between {
+    justify-content: space-between;
+  }
+
+  &.center {
+    justify-content: center;
+  }
+
+  &.start {
+    justify-content: start;
+  }
+
+  &.align-left {
+    align-items: flex-start;
+  }
+
+  &.align-right {
+    align-items: flex-end;
+  }
+
+  &.align-center {
+    align-items: center;
+  }
+
+
+}
+
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  width: 100%;
+  min-height: 100%;
+  height: 1px;
+  overflow-x: hidden;
+}
+
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 300;
+  margin: 0;
+  padding: 0;
+  /*font-size: calc( (100vw - Vmin)/(Vmax - Vmin) * (Fmax - Fmin) + Fmin);*/
+  /*font-size: calc( (100vw - 480px)/(1280 - 480) * (24 - 16) + 16px);*/
+  font-size: calc( (100vw - 30rem)/(80 - 30) * (1.5 - 1) + 1rem);
+}
+
+.inner-layout {
+  padding: 20px 10px;
+  @include respond-to(middleSmartphone) {
+    padding: 40px 20px;
+  }
+}
+
+.content-wrapper {
+  min-width: 300px;
+  max-width: 1100px;
+  width: auto;
+  margin: 0 auto;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  overflow-x: hidden;
+}
